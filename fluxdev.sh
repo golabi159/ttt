@@ -5,9 +5,19 @@ COMFYUI_DIR=${WORKSPACE}/ComfyUI
 
 HF_TOKEN="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"
 
-APT_PACKAGES=()
-PIP_PACKAGES=()
+APT_PACKAGES=(
+    #"package-1"
+    #"package-2"
+)
+
+PIP_PACKAGES=(
+    #"package-1"
+    #"package-2"
+)
+
 NODES=(
+    #"https://github.com/ltdrdata/ComfyUI-Manager"
+    #"https://github.com/cubiq/ComfyUI_essentials"
      "https://github.com/XLabs-AI/x-flux-comfyui.git"
      "https://github.com/rgthree/rgthree-comfy.git"
      "https://github.com/Fannovel16/comfyui_controlnet_aux.git"
@@ -66,7 +76,7 @@ function provisioning_start() {
     provisioning_download "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors" "${COMFYUI_DIR}/models/unet"
     provisioning_download "https://huggingface.co/black-forest-labs/FLUX.1-Fill-dev/resolve/main/flux1-fill-dev.safetensors" "${COMFYUI_DIR}/models/unet"
     provisioning_download "https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors" "${COMFYUI_DIR}/models/style_models"
-    wget --header="Authorization: Bearer $HF_TOKEN" -q --show-progress -O "${COMFYUI_DIR}/models/loras/FLUX.1-Turbo-Alpha.safetensors" "https://huggingface.co/alimama-creative/FLUX.1-Turbo-Alpha/resolve/main/diffusion_pytorch_model.safetensors"
+    wget --header="Authorization: Bearer $HF_TOKEN" "https://huggingface.co/alimama-creative/FLUX.1-Turbo-Alpha/resolve/main/diffusion_pytorch_model.safetensors" -O ${COMFYUI_DIR}/models/loras/FLUX.1-Turbo-Alpha.safetensors
     provisioning_download "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors" "${COMFYUI_DIR}/models/vae"
     provisioning_get_files "${COMFYUI_DIR}/models/clip" "${CLIP_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/clip_vision" "${CLIPV_MODELS[@]}"
