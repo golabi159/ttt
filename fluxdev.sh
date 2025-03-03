@@ -18,15 +18,10 @@ PIP_PACKAGES=(
 NODES=(
     #"https://github.com/ltdrdata/ComfyUI-Manager"
     #"https://github.com/cubiq/ComfyUI_essentials"
-     "https://github.com/XLabs-AI/x-flux-comfyui.git"
-     "https://github.com/rgthree/rgthree-comfy.git"
-     "https://github.com/Fannovel16/comfyui_controlnet_aux.git"
-     "https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl.git"
-
 )
 
 WORKFLOWS=(
-    "https://gist.githubusercontent.com/robballantyne/f8cb692bdcd89c96c0bd1ec0c969d905/raw/2d969f732d7873f0e1ee23b2625b50f201c722a5/flux_dev_example.json"
+
 )
 
 CHECKPOINT_MODELS=(
@@ -61,8 +56,6 @@ function provisioning_start() {
     provisioning_get_files \
         "${COMFYUI_DIR}/models/unet" \
         "${UNET_MODELS[@]}"
-wget --header="Authorization: Bearer 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" "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors" -O ${COMFYUI_DIR}/models/unet/flux1-dev.safetensors 
-
     provisioning_get_files \
         "${COMFYUI_DIR}/models/lora" \
         "${LORA_MODELS[@]}"
